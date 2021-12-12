@@ -16,16 +16,19 @@ from sklearn.preprocessing import StandardScaler
 from sklearn import base
 import numpy as np
 
-processed_df = pd.read_csv('/Users/katewang/Desktop/2021 Fall/STA 560/project/predict-future-sales/processed_data.csv')
-df = pd.read_csv('/Users/katewang/Desktop/2021 Fall/STA 560/project/predict-future-sales/shop_sales.csv')
-item_categories = pd.read_csv('/Users/katewang/Desktop/2021 Fall/STA 560/project/predict-future-sales/item_categories.csv')
-items           = pd.read_csv('/Users/katewang/Desktop/2021 Fall/STA 560/project/predict-future-sales/items.csv')
-sales           = pd.read_csv('/Users/katewang/Desktop/2021 Fall/STA 560/project/predict-future-sales/sales_train.csv')
-shops           = pd.read_csv('/Users/katewang/Desktop/2021 Fall/STA 560/project/predict-future-sales/shops.csv')
-test            = pd.read_csv('/Users/katewang/Desktop/2021 Fall/STA 560/project/predict-future-sales/test.csv')
-print(processed_df.head())
+import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
 
+INPUTFOLDER = '../input/competitive-data-science-predict-future-sales/'
 
+item_categories = pd.read_csv(os.path.join(INPUTFOLDER, 'item_categories.csv'))
+items           = pd.read_csv(os.path.join(INPUTFOLDER, 'items.csv'))
+sales           = pd.read_csv(os.path.join(INPUTFOLDER, 'sales_train.csv'))
+shops           = pd.read_csv(os.path.join(INPUTFOLDER, 'shops.csv'))
+test            = pd.read_csv(os.path.join(INPUTFOLDER, 'test.csv'))
+              
 # EXTRACTING THE YEAR AND THE MONTH FROM THE DATE COLUMN
 MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 LINEWIDTH=2
@@ -192,7 +195,7 @@ matrix
 
 
 # cnt_block_category
-sales           = pd.read_csv('/Users/katewang/Desktop/2021 Fall/STA 560/project/predict-future-sales/sales_train.csv')
+sales           = pd.read_csv(os.path.join(INPUTFOLDER, 'sales_train.csv'))
 #sales = sales["item_id","item_price"].groupby('item_id').transform(lambda x: (x - x.mean()) / x.std())
 groups = sales[["item_price","item_id"]].groupby("item_id")
 
