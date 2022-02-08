@@ -1,4 +1,4 @@
-# Futer-sale-forecast-Kaggle
+# Future-sale-forecast-Kaggle
 https://www.kaggle.com/c/competitive-data-science-predict-future-sales
 Provided with daily historical sales data. 
 ● sales_train.csv - the training set. Daily historical data from January 2013 to October 2015.
